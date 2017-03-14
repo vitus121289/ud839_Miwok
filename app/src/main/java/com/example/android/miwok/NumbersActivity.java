@@ -48,7 +48,7 @@ public class NumbersActivity extends AppCompatActivity {
         LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
 
         // Repeats the block of code inside of the loop until the index counter matches the size of the array list.
-        for ( int index = 0; index < words.size(); index++) {
+        for( int index = 0; index < words.size(); index++) {
 
             // Creates a new text view.
             TextView wordView = new TextView(this);
