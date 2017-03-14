@@ -17,9 +17,8 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -44,21 +43,13 @@ public class NumbersActivity extends AppCompatActivity {
         words.add("Nine");
         words.add("Ten");
 
-        // Finds the root view so that we can add child views to it.
-        LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
+        // Creates an array adapter with a preset layout from android and with our words array list as its data source.
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, R.layout.list_item, words);
 
-        // Repeats the block of code inside of the loop until the index counter matches the size of the array list.
-        for( int index = 0; index < words.size(); index++) {
+        // Finds a list view object from the view hierarchy.
+        ListView listView = (ListView) findViewById(R.id.list);
 
-            // Creates a new text view.
-            TextView wordView = new TextView(this);
-
-            // Sets the text view to the value of the current array index.
-            wordView.setText(words.get(index));
-
-            // Adds the text view to the parent view
-            rootView.addView(wordView);
-
-        }
+        // Sets the array adapter to be displayed on the list view.
+        listView.setAdapter(itemsAdapter);
     }
 }
