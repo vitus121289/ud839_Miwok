@@ -18,6 +18,8 @@ package com.example.android.miwok;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -42,8 +44,21 @@ public class NumbersActivity extends AppCompatActivity {
         words.add("Nine");
         words.add("Ten");
 
-        for (int i = 0; i < words.size(); i++) {
-            Log.v("NumbersActivity", "Word at index[" + i + "]" + ": " + words.get(i));
+        // Finds the root view so that we can add child views to it.
+        LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
+
+        // Repeats the block of code inside of the loop until the index counter matches the size of the array list.
+        for ( int index = 0; index < words.size(); index++) {
+
+            // Creates a new text view.
+            TextView wordView = new TextView(this);
+
+            // Sets the text view to the value of the current array index.
+            wordView.setText(words.get(index));
+
+            // Adds the text view to the parent view
+            rootView.addView(wordView);
+
         }
     }
 }
