@@ -26,22 +26,22 @@ public class NumbersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_numbers);
+        setContentView(R.layout.words_list);
 
         // Creates an ArrayList of words with a custom class of Word.
         ArrayList<Word> words = new ArrayList<Word>();
 
         // Populates the ArrayList with english and miwok word translation.
-        words.add(new Word("One", "Lutti"));
-        words.add(new Word("Two", "Otiiko"));
-        words.add(new Word("Three", "Tolookosu"));
-        words.add(new Word("Four", "Oyyisa"));
-        words.add(new Word("Five", "Massokka"));
-        words.add(new Word("Six", "Temmoka"));
-        words.add(new Word("Seven", "Kenekaku"));
-        words.add(new Word("Eight", "Kawinta"));
-        words.add(new Word("Nine", "Wo'e"));
-        words.add(new Word("Ten", "Na'aacha"));
+        words.add(new Word("One", "lutti"));
+        words.add(new Word("Two", "otiiko"));
+        words.add(new Word("Three", "tolookosu"));
+        words.add(new Word("Four", "oyyisa"));
+        words.add(new Word("Five", "massokka"));
+        words.add(new Word("Six", "temmoka"));
+        words.add(new Word("Seven", "kenekaku"));
+        words.add(new Word("Eight", "kawinta"));
+        words.add(new Word("Nine", "wo'e"));
+        words.add(new Word("Ten", "na'aacha"));
 
         // Creates an array adapter with a preset layout from android and with our words array list as its data source.
         WordAdapter itemsAdapter = new WordAdapter(this, words);
