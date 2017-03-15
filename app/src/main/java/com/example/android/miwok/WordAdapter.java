@@ -17,6 +17,12 @@ import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
+    /**
+     * Constructor of WordAdapter.
+     *
+     * @param context context of the current activity the object is in.
+     * @param word    an array list of words.
+     */
     public WordAdapter(Context context, ArrayList<Word> word) {
         // Method to call the superclass' constructor.
         super(context, 0, word);

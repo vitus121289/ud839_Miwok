@@ -9,12 +9,24 @@ public class Word {
     private String mMiwokTranslation;
     private int mImageResourceId;
 
+    /**
+     * Constructor of Word class.
+     *
+     * @param defaultTranslation the original translation of the word.
+     * @param miwokTranslation   the miwok translation of the word.
+     */
     public Word(String defaultTranslation, String miwokTranslation) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
     }
 
-
+    /**
+     * Constructor of Word class.
+     *
+     * @param defaultTranslation the original translation of the word.
+     * @param miwokTranslation   the miwok translation of the word.
+     * @param imageResourceId    the resource ID of the image that correspond to a specific word.
+     */
     public Word(String defaultTranslation, String miwokTranslation, int imageResourceId) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
@@ -36,7 +48,6 @@ public class Word {
 
         return mMiwokTranslation;
     }
-
 
     /**
      * Method to get the resource ID of an image.
