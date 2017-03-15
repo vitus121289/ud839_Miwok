@@ -17,17 +17,26 @@ import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
-    public WordAdapter(Context context, ArrayList<Word> word){
+    public WordAdapter(Context context, ArrayList<Word> word) {
+        // Method to call the superclass' constructor.
         super(context, 0, word);
     }
 
+    /**
+     * Provides a view for and AdapterView (ListView, GridView, etc.).
+     *
+     * @param position    the AdapterView position that is requesting a view.
+     * @param convertView the recycled view to populate
+     * @param parent      the parent ViewGroup that is used for inflation.
+     * @return the View for the position in the AdapterView.
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItemView = convertView;
 
         // Checks if the current view is being reused if not inflate the view.
-        if(listItemView == null) {
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item, parent, false);
         }
