@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItemView = convertView;
 
-        // Checks if the current view is being reused if not inflate the view.
+        // Checks if the current view is being reused, if not, inflate the view.
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item, parent, false);
@@ -61,6 +62,12 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
         // Sets the miwok word translation to the miwok_text_view.
         miwokTextView.setText(currentWord.getMiwokTranslation());
+
+        // Finds the image view in the list_item.xml with the ID words_image_view.
+        ImageView wordsImageView = (ImageView) listItemView.findViewById(R.id.words_image_view);
+
+        // Sets the image view to the words_image_view.
+        wordsImageView.setImageResource(currentWord.getImageResourceId());
 
         return listItemView;
     }
