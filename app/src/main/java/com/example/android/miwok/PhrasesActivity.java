@@ -44,7 +44,7 @@ public class PhrasesActivity extends AppCompatActivity {
         words.add(new Word("Come here.", "әnni'nem"));
 
         // Creates an array adapter with a preset layout from android and with our words array list as its data source.
-        WordAdapter itemsAdapter = new WordAdapter(this, words);
+        WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_phrases);
 
         // Finds a list view object from the view hierarchy.
         ListView listView = (ListView) findViewById(R.id.list);
