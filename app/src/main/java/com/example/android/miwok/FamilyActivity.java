@@ -17,12 +17,39 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class FamilyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_family);
+        setContentView(R.layout.words_list);
+
+        // Creates an ArrayList of words with a custom class of Word.
+        ArrayList<Word> words = new ArrayList<Word>();
+
+        // Populates the ArrayList with english and miwok word translation.
+        words.add(new Word("Father", "әpә"));
+        words.add(new Word("Mother", "әṭa"));
+        words.add(new Word("Son", "angsi"));
+        words.add(new Word("Daughter", "tune"));
+        words.add(new Word("Older brother", "taachi"));
+        words.add(new Word("Younger brother", "chalitti"));
+        words.add(new Word("Older sister", "teṭe"));
+        words.add(new Word("Younger sister", "kolliti"));
+        words.add(new Word("Grandmother", "ama"));
+        words.add(new Word("Grandfather", "paapa"));
+
+        // Creates an array adapter with a preset layout from android and with our words array list as its data source.
+        WordAdapter itemsAdapter = new WordAdapter(this, words);
+
+        // Finds a list view object from the view hierarchy.
+        ListView listView = (ListView) findViewById(R.id.list);
+
+        // Sets the array adapter to be displayed on the list view.
+        listView.setAdapter(itemsAdapter);
     }
 }

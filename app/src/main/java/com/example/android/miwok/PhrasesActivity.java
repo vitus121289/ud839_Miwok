@@ -17,12 +17,39 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phrases);
+        setContentView(R.layout.words_list);
+
+        // Creates an ArrayList of words with a custom class of Word.
+        ArrayList<Word> words = new ArrayList<Word>();
+
+        // Populates the ArrayList with english and miwok word translation.
+        words.add(new Word("Where are you going?", "minto wuksus"));
+        words.add(new Word("What is your name?", "tinnә oyaase'nә"));
+        words.add(new Word("My name is...", "oyaaset..."));
+        words.add(new Word("How are you feeling?", "michәksәs?"));
+        words.add(new Word("I'm feeling good.", "kuchi achit"));
+        words.add(new Word("Are you coming?", "әәnәs'aa?"));
+        words.add(new Word("Yes I'm coming.", "hәә’ әәnәm"));
+        words.add(new Word("i'm coming.", "әәnәm"));
+        words.add(new Word("Let's go.", "yoowutis"));
+        words.add(new Word("Come here.", "әnni'nem"));
+
+        // Creates an array adapter with a preset layout from android and with our words array list as its data source.
+        WordAdapter itemsAdapter = new WordAdapter(this, words);
+
+        // Finds a list view object from the view hierarchy.
+        ListView listView = (ListView) findViewById(R.id.list);
+
+        // Sets the array adapter to be displayed on the list view.
+        listView.setAdapter(itemsAdapter);
     }
 }

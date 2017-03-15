@@ -17,12 +17,37 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class ColorsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_colors);
+        setContentView(R.layout.words_list);
+
+        // Creates an ArrayList of words with a custom class of Word.
+        ArrayList<Word> words = new ArrayList<Word>();
+
+        // Populates the ArrayList with english and miwok word translation.
+        words.add(new Word("Red", "weṭeṭṭi"));
+        words.add(new Word("Green", "chokokki"));
+        words.add(new Word("Brown", "takaakki"));
+        words.add(new Word("Gray", "topoppi"));
+        words.add(new Word("Black", "kululli"));
+        words.add(new Word("White", "kelelli"));
+        words.add(new Word("Dusty yellow", "topiisә"));
+        words.add(new Word("Mustard yellow", "chiwiiṭә"));
+
+        // Creates an array adapter with a preset layout from android and with our words array list as its data source.
+        WordAdapter itemsAdapter = new WordAdapter(this, words);
+
+        // Finds a list view object from the view hierarchy.
+        ListView listView = (ListView) findViewById(R.id.list);
+
+        // Sets the array adapter to be displayed on the list view.
+        listView.setAdapter(itemsAdapter);
     }
 }
