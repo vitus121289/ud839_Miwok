@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,15 +19,21 @@ import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
+    private int mColorResourceId;
+
     /**
      * Constructor of WordAdapter.
      *
-     * @param context context of the current activity the object is in.
-     * @param word    an array list of words.
+     * @param colorResourceId resource ID for the background color of the texts.
+     * @param context         context of the current activity the object is in.
+     * @param word            an array list of words.
      */
-    public WordAdapter(Context context, ArrayList<Word> word) {
+    public WordAdapter(Context context, ArrayList<Word> word, int colorResourceId) {
+
         // Method to call the superclass' constructor.
         super(context, 0, word);
+
+        mColorResourceId = colorResourceId;
     }
 
     /**
@@ -69,6 +76,16 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // Sets the image view to the words_image_view.
         wordsImageView.setImageResource(currentWord.getImageResourceId());
 
+        // Finds the linear layout with the ID words_parent_view.
+        LinearLayout wordsParentLayout = (LinearLayout) listItemView.findViewById(R.id.words_parent_layout);
+
+        // Sets the background color of the words_parent_layout to the color provided by the resource ID.
+        wordsParentLayout.setBackgroundResource(getColorResourceId());
+
         return listItemView;
+    }
+
+    private int getColorResourceId() {
+        return mColorResourceId;
     }
 }
