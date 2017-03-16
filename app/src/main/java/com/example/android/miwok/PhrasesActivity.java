@@ -104,4 +104,17 @@ public class PhrasesActivity extends AppCompatActivity {
 
         }
     }
+
+    /**
+     * Callback method when the app is on the stopped state of its lifecycle.
+     *
+     * Overridden to call the releaseMediaPlayer method to release resources from the media player when the app
+     * enters the stopped state.
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        releaseMediaPlayer();
+    }
 }
