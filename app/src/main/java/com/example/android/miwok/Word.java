@@ -61,8 +61,7 @@ public class Word {
 
         return mImageResourceId;
     }
-
-
+    
     /**
      * Method to get the resource ID of an audio.
      */
