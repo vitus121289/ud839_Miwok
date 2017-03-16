@@ -8,16 +8,19 @@ public class Word {
     private String mDefaultTranslation;
     private String mMiwokTranslation;
     private int mImageResourceId;
+    private int mAudioResourceId;
 
     /**
      * Constructor of Word class.
      *
      * @param defaultTranslation the original translation of the word.
      * @param miwokTranslation   the miwok translation of the word.
+     * @param audioResourceId    the resource ID for the audio on how to pronounce the word.
      */
-    public Word(String defaultTranslation, String miwokTranslation) {
+    public Word(String defaultTranslation, String miwokTranslation, int audioResourceId) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
+        mAudioResourceId = audioResourceId;
     }
 
     /**
@@ -26,11 +29,13 @@ public class Word {
      * @param defaultTranslation the original translation of the word.
      * @param miwokTranslation   the miwok translation of the word.
      * @param imageResourceId    the resource ID of the image that correspond to a specific word.
+     * @param audioResourceId    the resource ID for the audio on how to pronounce the word.
      */
-    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId) {
+    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId, int audioResourceId) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
         mImageResourceId = imageResourceId;
+        mAudioResourceId = audioResourceId;
     }
 
     /**
@@ -55,5 +60,14 @@ public class Word {
     public int getImageResourceId() {
 
         return mImageResourceId;
+    }
+
+
+    /**
+     * Method to get the resource ID of an audio.
+     */
+    public int getAudioResourceId() {
+
+        return mAudioResourceId;
     }
 }

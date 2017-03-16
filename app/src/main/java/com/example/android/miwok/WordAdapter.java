@@ -86,6 +86,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
     }
 
     private int getColorResourceId() {
+
         return mColorResourceId;
     }
 }
