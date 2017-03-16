@@ -26,14 +26,13 @@ import java.util.ArrayList;
 
 public class FamilyActivity extends AppCompatActivity {
 
-    ArrayList<Word> words;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.words_list);
 
         // Creates an ArrayList of words with a custom class of Word.
-        words = new ArrayList<Word>();
+        final ArrayList<Word> words = new ArrayList<Word>();
 
         // Populates the ArrayList with english and miwok word translation.
         words.add(new Word("Father", "әpә", R.drawable.family_father, R.raw.family_father));

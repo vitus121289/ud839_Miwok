@@ -26,7 +26,6 @@ import java.util.ArrayList;
 
 public class ColorsActivity extends AppCompatActivity {
 
-    ArrayList<Word> words;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class ColorsActivity extends AppCompatActivity {
         setContentView(R.layout.words_list);
 
         // Creates an ArrayList of words with a custom class of Word.
-        words = new ArrayList<Word>();
+        final ArrayList<Word> words = new ArrayList<Word>();
 
         // Populates the ArrayList with english and miwok word translation.
         words.add(new Word("Red", "weṭeṭṭi", R.drawable.color_red, R.raw.color_red));
