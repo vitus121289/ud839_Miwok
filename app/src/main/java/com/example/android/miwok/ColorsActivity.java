@@ -15,13 +15,18 @@
  */
 package com.example.android.miwok;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class ColorsActivity extends AppCompatActivity {
+
+    ArrayList<Word> words;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +34,7 @@ public class ColorsActivity extends AppCompatActivity {
         setContentView(R.layout.words_list);
 
         // Creates an ArrayList of words with a custom class of Word.
-        ArrayList<Word> words = new ArrayList<Word>();
+        words = new ArrayList<Word>();
 
         // Populates the ArrayList with english and miwok word translation.
         words.add(new Word("Red", "weṭeṭṭi", R.drawable.color_red, R.raw.color_red));
@@ -49,5 +54,17 @@ public class ColorsActivity extends AppCompatActivity {
 
         // Sets the array adapter to be displayed on the list view.
         listView.setAdapter(itemsAdapter);
+
+        // Sets a click listener for the list view.
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            // When a view is clicked an audio is played corresponding to the word that was clicked-on.
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                MediaPlayer mediaPlayer = MediaPlayer.create(ColorsActivity.this, words.get(i).getAudioResourceId());
+                mediaPlayer.start();
+            }
+        });
     }
 }
