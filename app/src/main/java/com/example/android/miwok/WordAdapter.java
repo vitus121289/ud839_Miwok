@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -77,7 +78,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         wordsImageView.setImageResource(currentWord.getImageResourceId());
 
         // Finds the linear layout with the ID words_parent_view.
-        LinearLayout wordsParentLayout = (LinearLayout) listItemView.findViewById(R.id.words_parent_layout);
+        RelativeLayout wordsParentLayout = (RelativeLayout) listItemView.findViewById(R.id.words_parent_layout);
 
         // Sets the background color of the words_parent_layout to the color provided by the resource ID.
         wordsParentLayout.setBackgroundResource(getColorResourceId());

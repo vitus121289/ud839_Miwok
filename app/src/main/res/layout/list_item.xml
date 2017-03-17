@@ -3,36 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:minHeight="@dimen/list_item_height">
+    android:minHeight="@dimen/list_item_height"
+    android:orientation="horizontal">
 
     <ImageView
-        style="@style/ImageStyle"
         android:id="@+id/words_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/ImageStyle"
         tools:src="@mipmap/ic_launcher" />
 
-    <LinearLayout
+    <RelativeLayout
+        android:paddingRight="16dp"
         android:id="@+id/words_parent_layout"
-        style="@style/ParentTextViewStyle"
-        android:orientation="vertical">
+        style="@style/InnerRelativeLayoutStyle"
+        tools:background="@color/category_numbers">
 
-        <TextView
-            style="@style/MiwokTextStyle"
-            android:id="@+id/miwok_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            tools:text="lutti" />
+        <LinearLayout
+            style="@style/InnerLinearLayoutStyle"
+            android:orientation="vertical">
 
-        <TextView
-            style="@style/DefaultTextStyle"
-            android:id="@+id/default_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            tools:text="one" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/miwok_text_view"
+                style="@style/MiwokTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                tools:text="lutti" />
+
+            <TextView
+                android:id="@+id/default_text_view"
+                style="@style/DefaultTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                tools:text="one" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/arrow_ic_width"
+            android:layout_height="@dimen/arrow_ic_height"
+            android:src="@drawable/ic_play_arrow"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
 
 </LinearLayout>

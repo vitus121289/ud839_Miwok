@@ -20,43 +20,51 @@
         <item name="colorPrimaryDark">@color/primary_dark_color</item>
     </style>
 
-    <!-- Style for a category of vocabulary words -->
+    <!-- Style for a category of vocabulary words. -->
     <style name="CategoryStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/list_item_height</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">16dp</item>
+        <item name="android:padding">@dimen/activity_horizontal_margin</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
 
-    <!-- Style for the image beside a word -->
+    <!-- Style for the image beside a word. -->
     <style name="ImageStyle">
         <item name="android:layout_height">@dimen/list_item_height</item>
         <item name="android:layout_width">@dimen/list_item_height</item>
         <item name="android:background">@color/tan_background</item>
     </style>
 
-    <!-- Style for the parent view of the words being translated -->
-    <style name="ParentTextViewStyle">
+    <!-- Style for the inner relative layout view that wraps around the inner linear layout and the
+         play arrow icon. -->
+    <style name="InnerRelativeLayoutStyle">
         <item name="android:layout_height">@dimen/list_item_height</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingLeft">@dimen/inner_relative_layout_horizontal_padding</item>
+        <item name="android:paddingRight">@dimen/inner_relative_layout_horizontal_padding</item>
     </style>
 
-    <!-- Style for the text view of the miwok translated word -->
+    <!-- Style for the inner linear layout view of the words being translated. -->
+    <style name="InnerLinearLayoutStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <!-- Style for the text view of the miwok translated word. -->
     <style name="MiwokTextStyle">
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/words_text_size</item>
         <item name="android:gravity">bottom</item>
     </style>
 
-    <!-- Style for the text view of the untranslated word -->
+    <!-- Style for the text view of the untranslated word. -->
     <style name="DefaultTextStyle">
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/words_text_size</item>
         <item name="android:gravity">top</item>
     </style>
 </resources>
