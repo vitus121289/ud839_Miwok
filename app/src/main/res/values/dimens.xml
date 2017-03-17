@@ -24,8 +24,11 @@
     <dimen name="arrow_ic_width">24dp</dimen>
 
     <!-- Edge padding for views, per customer request -->
-    <dimen name="inner_relative_layout_horizontal_padding">16dp</dimen>
+    <dimen name="words_container_horizontal_padding">16dp</dimen>
 
     <!-- Text size of both the default and miwok translated words -->
     <dimen name="words_text_size">16sp</dimen>
+
+    <dimen name="image_max_height">88dp</dimen>
+    <dimen name="image_max_width">88dp</dimen>
 </resources>

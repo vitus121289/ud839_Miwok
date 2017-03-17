@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minHeight="@dimen/list_item_height"
+    android:layout_height="88dp"
     android:orientation="horizontal">
 
     <ImageView
@@ -12,39 +11,28 @@
         tools:src="@mipmap/ic_launcher" />
 
     <RelativeLayout
-        android:paddingRight="16dp"
-        android:id="@+id/words_parent_layout"
-        style="@style/InnerRelativeLayoutStyle"
-        tools:background="@color/category_numbers">
+        android:id="@+id/words_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             style="@style/InnerLinearLayoutStyle"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:background="@color/category_numbers">
 
             <TextView
                 android:id="@+id/miwok_text_view"
                 style="@style/MiwokTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
                 tools:text="lutti" />
 
             <TextView
                 android:id="@+id/default_text_view"
                 style="@style/DefaultTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
                 tools:text="one" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="@dimen/arrow_ic_width"
-            android:layout_height="@dimen/arrow_ic_height"
-            android:src="@drawable/ic_play_arrow"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
+            style="@style/PlayButtonIconStyle"
+            android:src="@drawable/ic_play_arrow" />
     </RelativeLayout>
-
 </LinearLayout>

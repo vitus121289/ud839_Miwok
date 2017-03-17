@@ -33,24 +33,18 @@
 
     <!-- Style for the image beside a word. -->
     <style name="ImageStyle">
-        <item name="android:layout_height">@dimen/list_item_height</item>
-        <item name="android:layout_width">@dimen/list_item_height</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:maxHeight">@dimen/image_max_height</item>
+        <item name="android:maxWidth">@dimen/image_max_width</item>
         <item name="android:background">@color/tan_background</item>
-    </style>
-
-    <!-- Style for the inner relative layout view that wraps around the inner linear layout and the
-         play arrow icon. -->
-    <style name="InnerRelativeLayoutStyle">
-        <item name="android:layout_height">@dimen/list_item_height</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:paddingLeft">@dimen/inner_relative_layout_horizontal_padding</item>
-        <item name="android:paddingRight">@dimen/inner_relative_layout_horizontal_padding</item>
     </style>
 
     <!-- Style for the inner linear layout view of the words being translated. -->
     <style name="InnerLinearLayoutStyle">
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">@dimen/list_item_height</item>
         <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingLeft">@dimen/words_container_horizontal_padding</item>
     </style>
 
     <!-- Style for the text view of the miwok translated word. -->
@@ -59,6 +53,9 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/words_text_size</item>
         <item name="android:gravity">bottom</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
     <!-- Style for the text view of the untranslated word. -->
@@ -66,5 +63,16 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/words_text_size</item>
         <item name="android:gravity">top</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="PlayButtonIconStyle">
+        <item name="android:layout_height">@dimen/arrow_ic_height</item>
+        <item name="android:layout_width">@dimen/arrow_ic_width</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
     </style>
 </resources>
