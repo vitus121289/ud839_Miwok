@@ -15,6 +15,8 @@
  */
 package com.example.android.miwok;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +30,8 @@ public class FamilyActivity extends AppCompatActivity {
 
     private MediaPlayer mMediaPlayer;
 
+    private AudioManager mAudioManagerFamily;
+
     // Creates a private interface implementation called mMediaPlayerOnComplete that calls the releaseMediaPlayer() method
     // when the audio file has finished playing.
     private MediaPlayer.OnCompletionListener mMediaPlayerOnComplete = new MediaPlayer.OnCompletionListener() {
@@ -36,6 +40,33 @@ public class FamilyActivity extends AppCompatActivity {
         public void onCompletion(MediaPlayer mediaPlayer) {
 
             releaseMediaPlayer();
+        }
+    };
+
+    /**
+     * Creates an instance of the AudioManager.OnAudioFocusChangeListener called audioFocusChangeListener
+     * and implements the callback method onAudioFocusChange.
+     */
+    private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+        public void onAudioFocusChange(int focusChange) {
+
+            if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT || focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
+
+                // AUDIOFOCUS_LOSS_TRANSIENT and AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK states shall be
+                // handled similarly, in which they are both paused when audio focus is loss temporarily
+                // then resumed from the beginning when audio focus is returned.
+                mMediaPlayer.pause();
+                mMediaPlayer.seekTo(0);
+            } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+
+                // Release the resources used by the MediaPlayer when audio focus is loss
+                // indefinitely.
+                releaseMediaPlayer();
+            } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+
+                // Plays the audio file when auto focus is gained.
+                mMediaPlayer.start();
+            }
         }
     };
 
@@ -78,11 +109,20 @@ public class FamilyActivity extends AppCompatActivity {
                 // Releases the resources being used by the media player before playing an audio file.
                 releaseMediaPlayer();
 
-                mMediaPlayer = MediaPlayer.create(FamilyActivity.this, words.get(i).getAudioResourceId());
-                mMediaPlayer.start();
+                // Creates an AudioManager object called audioManagerNumbers.
+                mAudioManagerFamily = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-                // Sets a completion listener for mMediaPlayer object
-                mMediaPlayer.setOnCompletionListener(mMediaPlayerOnComplete);
+                // Requests for an audio focus.
+                int audioFocusRequestResult = mAudioManagerFamily.requestAudioFocus(audioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+
+                // If audio focus is granted instantiate a MediaPlayer object then play the audio file.
+                if (audioFocusRequestResult == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    mMediaPlayer = MediaPlayer.create(FamilyActivity.this, words.get(i).getAudioResourceId());
+                    mMediaPlayer.start();
+
+                    // Sets a completion listener for mMediaPlayer object
+                    mMediaPlayer.setOnCompletionListener(mMediaPlayerOnComplete);
+                }
             }
         });
     }
@@ -102,12 +142,14 @@ public class FamilyActivity extends AppCompatActivity {
             // is not configured to play an audio file at the moment.
             mMediaPlayer = null;
 
+            //Releases the audio focus.
+            mAudioManagerFamily.abandonAudioFocus(audioFocusChangeListener);
         }
     }
 
     /**
      * Callback method when the app is on the stopped state of its lifecycle.
-     *
+     * <p>
      * Overridden to call the releaseMediaPlayer method to release resources from the media player when the app
      * enters the stopped state.
      */
