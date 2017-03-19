@@ -77,6 +77,9 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.words_list);
 
+        // Creates an up button that navigates to the parent activity
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // Creates an ArrayList of words with a custom Word class.
         final ArrayList<Word> words = new ArrayList<Word>();
 
