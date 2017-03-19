@@ -75,6 +75,9 @@ public class PhrasesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.words_list);
 
+        // Enables up button on this activity.
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // Creates an ArrayList of words with a custom class of Word.
         final ArrayList<Word> words = new ArrayList<Word>();
 
