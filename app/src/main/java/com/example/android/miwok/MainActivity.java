@@ -16,6 +16,7 @@
 package com.example.android.miwok;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -29,9 +30,16 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
+        // Finds a view pager with the resource ID of view_pager.
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
 
-        PagerAdapter pagerAdapter = new CategoryAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(pagerAdapter);
+        // Sets up the category adapter to display the contents of each category.
+        PagerAdapter categoryAdapter = new CategoryAdapter(getSupportFragmentManager(), MainActivity.this);
+        viewPager.setAdapter(categoryAdapter);
+
+        // Sets up the tab so that it displays what category is being displayed and what other
+        // categories are there.
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
     }
 }
