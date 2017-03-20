@@ -15,11 +15,10 @@
  */
 package com.example.android.miwok;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,61 +29,9 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        // Finds a text view that shows the number category.
-        TextView numbersView = (TextView) findViewById(R.id.numbers);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
 
-        // Sets a click listener to the numbers text view.
-        numbersView.setOnClickListener(new View.OnClickListener() {
-
-            // This method will be executed when numbers text view is clicked.
-            @Override
-            public void onClick(View view) {
-                Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
-                startActivity(numbersIntent);
-            }
-        });
-
-        // Finds a text view that shows the family members category.
-        TextView familyView = (TextView) findViewById(R.id.family);
-
-        // Sets a click listener to the family text view.
-        familyView.setOnClickListener(new View.OnClickListener() {
-
-            // This method will be executed when the family text view is clicked.
-            @Override
-            public void onClick(View view) {
-                Intent familyIntent = new Intent(MainActivity.this, FamilyActivity.class);
-                startActivity(familyIntent);
-            }
-        });
-
-        // Finds a text view that shows the color category.
-        TextView colorsView = (TextView) findViewById(R.id.colors);
-
-        // Sets a click listener to the colors text view.
-        colorsView.setOnClickListener(new View.OnClickListener() {
-
-            // This method will be executed when the colors text view is clicked.
-            @Override
-            public void onClick(View view) {
-                Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
-                startActivity(colorsIntent);
-            }
-        });
-
-        // Finds a text view that shows the phrases category.
-        TextView phrasesView = (TextView) findViewById(R.id.phrases);
-
-        // Sets a click listener to the phrases text view.
-        phrasesView.setOnClickListener(new View.OnClickListener() {
-
-            // This method will be executed when the phrases text view is clicked.
-            @Override
-            public void onClick(View view) {
-                Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
-                startActivity(phrasesIntent);
-            }
-        });
+        PagerAdapter pagerAdapter = new FixedTabPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
     }
-
 }
