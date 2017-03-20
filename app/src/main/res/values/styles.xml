@@ -31,6 +31,12 @@
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
 
+    <!-- Style for the category tab -->
+
+    <style name="CategoryTabStyle">
+        <item name="android:background">@color/primary_color</item>
+    </style>
+
     <!-- Style for the image beside a word. -->
     <style name="ImageStyle">
         <item name="android:layout_height">wrap_content</item>
